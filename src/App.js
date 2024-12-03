@@ -57,14 +57,14 @@ function App() {
         spotify: spotify,
       });
 
-      s.getMe().then((user) => {
+      spotify.getMe().then((user) => {
         dispatch({
           type: "SET_USER",
           user,
         });
       });
 
-      s.getUserPlaylists().then((playlists) => {
+      spotify.getUserPlaylists().then((playlists) => {
         dispatch({
           type: "SET_PLAYLISTS",
           playlists,
