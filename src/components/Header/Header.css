@@ -7,8 +7,8 @@
 .header_left{
     flex: 0.5;
     min-width: 70px;
-    background-color: white;
-    color: grey;
+    background-color: var(--sidebar_color);
+    color: var(--input-color);
     border-radius: 30px;
     padding: 10px;
     display: flex;

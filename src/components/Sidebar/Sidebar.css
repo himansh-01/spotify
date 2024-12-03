@@ -2,12 +2,12 @@
     border: 1px black;
     height: 100vh;
     flex:0.2;
-    color: white;
+    color: var(--body_color);
     padding-left: 10px;
     padding-right: 10px;
     min-width: 230px;
     height: 100vh;
-    background-color: #040404;
+    background-color: var(--sidebar_background);
 }
 
 .sidebar_logo{

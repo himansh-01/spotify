@@ -3,7 +3,7 @@
     padding: 20px;
     display: flex;
     align-items: center;
-    color: white;
+    color: var(--body_color);
 }
 
 .songRow:hover{

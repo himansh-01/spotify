@@ -1,3 +1,21 @@
+:root{
+  --body_background: linear-gradient(rgb(91, 87, 115), rgba(0,0,0,1));
+  --body_color: white;
+  --sidebar_background: #040404;
+  --sidebar_color: white;
+  --footer_background: #282828;
+  --input_color: grey;
+}
+
+[data-theme="light"]{
+  --body_background: white;
+  --body_color: black;
+  --sidebar_background: white;
+  --sidebar_color: grey;
+  --footer_background:#909090;
+  --input_color:white;
+}
+
 body::-webkit-scrollbar{
   display: none;
 }
