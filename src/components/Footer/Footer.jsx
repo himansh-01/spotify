@@ -10,6 +10,7 @@ import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
 import VolumeDownIcon from '@mui/icons-material/VolumeDown';
 import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
 import { useDataLayerValue } from '../../DataLayer';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 
 function Footer({spotify}) {
   const [{ item, playing }, dispatch] = useDataLayerValue();
@@ -123,7 +124,10 @@ function Footer({spotify}) {
             <VolumeDownIcon />
           </Grid2>
           <Grid2 item="true" xs="true">
-            <Slider aria-labelledby="continuous-slider" />
+            <Slider defaultValue={50} aria-label="Temperature" valueLabelDisplay="auto"  shiftStep={30} step={10} marks min={0} max={100} />
+          </Grid2>
+          <Grid2>
+            <VolumeUpIcon />
           </Grid2>
         </Grid2>
       </div>
