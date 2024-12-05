@@ -36,3 +36,13 @@
 .header_input{
     background-color: var(--sidebar_color);
 }
+
+::placeholder {
+    color: var(--input-color);
+    opacity: 1; /* Firefox */
+}
+
+::-ms-input-placeholder { /* Edge 12 -18 */
+    color: var(--input-color);
+  }
+  
