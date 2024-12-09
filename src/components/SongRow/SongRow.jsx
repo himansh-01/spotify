@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './SongRow.css'
 import { useDataLayerValue } from '../../DataLayer'
 
 function SongRow({ track }) {
   const [ {items},dispatch] = useDataLayerValue()
+  const [audioProgress, setAudioProgress] = useState(0)
 
   return (
     <div className='songRow' onClick={() => {
+      setAudioProgress(0)
       dispatch({
         type: "SET_ITEMS",
         items: track
