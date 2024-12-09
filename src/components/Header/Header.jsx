@@ -18,6 +18,13 @@ function Header() {
       setShow(!show)
     }
 
+    const handleLogout = () => {
+      localStorage.removeItem('spotify_access_token');
+      localStorage.removeItem('spotify_refresh_token');
+      window.location.href = "https://spotify-lac-iota.vercel.app/";
+      alert("you have logged out")
+    };
+
   return (
     <div className='header' onScrollCapture={() => {setShow(false)}}>
       {/* <div className='searchbox' style={{
@@ -35,6 +42,10 @@ function Header() {
         <div className="header_right">
             <Avatar src={user?.images[0]} alt={user?.display_name} />
             <h4>{user?.display_name}</h4>
+            <button onClick={handleLogout} className='logout_button'>
+              Logout
+           </button>
+
             <DarkMode />
         </div>
     </div>
