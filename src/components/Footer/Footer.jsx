@@ -94,31 +94,24 @@ function Footer() {
 
   const handleNextShuffleSong = ()=>{
     setAudioProgress(0)
-    if (items.id === 5) {
+    if (items.id === 5 && shuffle == false && repeat == false) {
       dispatch({
         type: "SET_ITEMS",
         items: top_artists[4]
       });
     } 
-    if(shuffle == true) {
+    if(shuffle == true && repeat == false) {
       const random = Math.floor(Math.random() * 5) + 1
       dispatch({
         type: "SET_ITEMS",
         items: top_artists[random]
       })
     }
-    if(shuffle == false && items.id !== 5){
+    if(shuffle == false && items.id !== 5 && repeat == false){
       const div= items.id
       dispatch({
         type: "SET_ITEMS",
         items: top_artists[div]
-      })
-    }
-    else{
-       setNumber(items.id);
-      dispatch({
-        type: "SET_ITEMS",
-        items: top_artists[number]
       })
     }
     dispatch({
