@@ -5,7 +5,7 @@
   --sidebar_color: white;
   --footer_background: #282828;
   --input_color: grey;
-  --image_url: "https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"; 
+  --hover_song: black;
 }
 
 [data-theme="light"]{
@@ -16,6 +16,7 @@
   --footer_background:#909090;
   --input_color:white;
   --image_url: "https://cdn.dribbble.com/userupload/9254418/file/original-b95e95fc7077cc201ec5949bd07b2f0a.png?resize=400x0";
+  --hover_song: #909090;
 }
 
 body::-webkit-scrollbar{

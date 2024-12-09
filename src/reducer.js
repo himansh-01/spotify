@@ -2,10 +2,18 @@ export const initialState = {
     user: null,
     playlists: [],
     spotify: null,
-    discover_weekly: null,
+    discover_weekly: 
+        {
+            idAlbum: 2115886,
+            idArtist: 112024,
+            idLabel: 47129,
+            strAlbum: "Thursday",
+            strAlbumThumb: "https://www.theaudiodb.com/images/media/album/thumb/thursday-4ee69293cd094.jpg",
+            strDescriptionEN: "Thursday is the second mixtape of Canadian artist, The Weeknd, released August 18, 2011 via his official website. The release follows his critically acclaimed, Polaris Music Prize-nominated debut release House of Balloons earlier the same year. As with his previous works, production for Thursday was handled by Canadian producers Doc McKinney and Illangelo. Buzz singles \"Rolling Stone\" and \"The Birds Part 1\" preceded the album's release. Young Money artist Drake contributes guest vocals to track \"The Zone\". The mixtape's production is an experimental mix of downtempo, dubstep, hip hop, rock, and reggae influences and sounds. Thursday received generally positive reviews from music critics. At Metacritic, which assigns a normalized rating out of 100 to reviews from mainstream critics and fans, the album received an average score of 80, based on 17 reviews, which indicates \"generally favorable reviews\"."
+},
     top_artists: null,
     playing: false,
-    item: null,
+    items: [],
     token: null
 }
 
@@ -37,21 +45,26 @@ const reducer = (state, action) => {
               ...state,
                 playing: action.playing,
             };
-        case "SET_ITEM":
+        case "SET_ITEMS":
             return {
               ...state,
-              item: action.item,
+              items: action.items,
             };
-        case "SET_TOP_ARTISTS":
+        case "SET_VOLUME":
             return {
               ...state,
-              top_artists: action.top_artists,
+              volume: action.volume,
             };
         case "SET_SPOTIFY":
             return {
               ...state,
               spotify: action.spotify,
-            };                     
+            };
+        case "SET_TOP_ARTISTS":
+            return {
+                ...state,
+                top_artists: action.top_artists
+            }                         
         default:
             return state    
     }

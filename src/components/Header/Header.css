@@ -45,4 +45,28 @@
 ::-ms-input-placeholder { /* Edge 12 -18 */
     color: var(--input-color);
   }
+
+.searchbox{
+    position: absolute;
+    top: 75px;
+    left: 390px;
+    background-color: rgb(56, 55, 55);
+    height: 200px;
+    width: 350px;
+    border-radius: 30px;
+}
+
+.output_box{
+    height: 20px;
+    width: 100%;
+    display: flex;
+}
+
+.output_img{
+    flex: 0.2;
+}
+
+.output_text{
+    flex:0.8
+}
   

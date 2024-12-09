@@ -4,9 +4,10 @@
     justify-content: space-between;
     bottom: 0;
     height: 65px;
-    width: 97%;
+    width: 98%;
     background-color: var(--footer_background);
     padding: 20px;
+    z-index: 10;
 }
 
 .footer__right * .MuiSlider-root{
@@ -62,4 +63,8 @@
     justify-content: space-between;
     align-items: center;
     color: var(--body_color);
-} 
+}
+
+.musicbar{
+    margin-left:  10px;
+}

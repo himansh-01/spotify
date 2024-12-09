@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Body.css'
 import { useDataLayerValue } from '../../DataLayer'
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
@@ -8,56 +8,18 @@ import SongRow from '../SongRow/SongRow';
 import Header from '../Header/Header'
 
 function Body({ spotify }) {
-  const [{ discover_weekly }, dispatch] = useDataLayerValue()
-
-  const playPlaylist = (id) => {
-    spotify
-      .play({
-        context_uri: `spotify:playlist:37i9dQZEVXcJZyENOWUFo7`,
-      })
-      .then((res) => {
-        spotify.getMyCurrentPlayingTrack().then((r) => {
-          dispatch({
-            type: "SET_ITEM",
-            item: r.item,
-          });
-          dispatch({
-            type: "SET_PLAYING",
-            playing: true,
-          });
-        });
-      });
-  };
-
-  const playSong = (id) => {
-    spotify
-      .play({
-        uris: [`spotify:track:${id}`],
-      })
-      .then((res) => {
-        spotify.getMyCurrentPlayingTrack().then((r) => {
-          dispatch({
-            type: "SET_ITEM",
-            item: r.item,
-          });
-          dispatch({
-            type: "SET_PLAYING",
-            playing: true,
-          });
-        });
-      });
-  };
+  const [{ discover_weekly, top_artists },] = useDataLayerValue()
 
   return (
     <div className="body">
       <Header spotify={spotify} />
 
       <div className="body__info">
-        <img src={discover_weekly?.images[0].url} alt="" />
+        <img src={discover_weekly?.strAlbumThumb} alt="" />
         <div className="body__infoText">
           <strong>PLAYLIST</strong>
-          <h2>Discover Weekly</h2>
-          <p>{discover_weekly?.description}</p>
+          <h2>{discover_weekly?.strAlbum}</h2>
+          <p>{discover_weekly?.strDescriptionEN?.slice(0, 1000)+ "....."}</p>
         </div>
       </div>
 
@@ -65,14 +27,14 @@ function Body({ spotify }) {
         <div className="body__icons">
           <PlayCircleFilledIcon
             className="body__shuffle"
-            onClick={playPlaylist}
+          
           />
           <FavoriteIcon fontSize="large" />
           <MoreHorizIcon />
         </div>
 
-        {discover_weekly?.tracks.items.map((item) => (
-          <SongRow playSong={playSong} track={item.track} />
+        {top_artists?.map((item) => (
+          <SongRow key={item.title} track={item} />
         ))}
       </div>
     </div>

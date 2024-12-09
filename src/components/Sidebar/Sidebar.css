@@ -22,3 +22,12 @@
     padding: 5px;
     font-size: 12px;
 }
+
+.album{
+    overflow-y: auto;
+    height: 400px;
+}
+
+.album::-webkit-scrollbar{
+    display: none;
+}

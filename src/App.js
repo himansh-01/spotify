@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Login from './components/Login/Login';
 import { getTokenFromUrl } from './spotify';
@@ -9,12 +9,24 @@ import { useDataLayerValue } from './DataLayer';
 const spotify = new SpotifyWebApi()
 
 function App() {
-  const [{ user, token }, dispatch] = useDataLayerValue()
+  const [{ token }, dispatch] = useDataLayerValue()
+
+  const [track, setTrack] = useState([])
+
+  useEffect(() =>{
+    fetch('https://www.theaudiodb.com/api/v1/json/2/album.php?i=112024').then(res => res.json()).then(data =>setTrack(data))
+  },[])
+  
 
   useEffect(() => {
     const hash = getTokenFromUrl()
     const _token = hash.access_token
     window.location.hash = ""
+
+    dispatch({
+      type: "SET_PLAYLIST",
+      playlists: track
+    })
 
     if(_token){
 
@@ -31,50 +43,13 @@ function App() {
           user: user
         })
       })
-      spotify.getUserPlaylists().then((playlists) =>{
-        dispatch({
-          type: "SET_PLALISTS",
-          playlists: playlists
-        })
-      })
-
-      spotify.getPlaylist().then(response =>{
-        dispatch({
-          type: "SET_DISCOVER_WEEKLY",
-          discover_weekly: response
-        })
-      })
-
-      spotify.getMyTopArtists().then((response) =>
-        dispatch({
-          type: "SET_TOP_ARTISTS",
-          top_artists: response,
-        })
-      );
 
       dispatch({
         type: "SET_SPOTIFY",
         spotify: spotify,
-      });
-
-      spotify.getMe().then((user) => {
-        dispatch({
-          type: "SET_USER",
-          user,
-        });
-      });
-
-      spotify.getUserPlaylists().then((playlists) => {
-        dispatch({
-          type: "SET_PLAYLISTS",
-          playlists,
-        })
-      })  
+      }); 
     } 
-  }, [token, dispatch])
-
-  // console.log('person', user)
-  console.log('token', token)
+  }, [token, dispatch, track])
 
   return (
     <div className="app">

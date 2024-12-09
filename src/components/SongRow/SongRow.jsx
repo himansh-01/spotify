@@ -1,14 +1,26 @@
 import React from 'react'
 import './SongRow.css'
+import { useDataLayerValue } from '../../DataLayer'
 
-function SongRow({ track, playSong }) {
+function SongRow({ track }) {
+  const [ {items},dispatch] = useDataLayerValue()
+
   return (
-    <div className='songRow' onClick={() => playSong(track.id)}>
-        <img className='songRow_album' src={track.album.images[0].url} alt="" />
+    <div className='songRow' onClick={() => {
+      dispatch({
+        type: "SET_ITEMS",
+        items: track
+      });
+      dispatch({
+        type: "SET_PLAYING",
+        playing: false
+      })
+    }}>
+        <img className='songRow_album' src={track?.img} alt="no img" />
         <div className="songRow_info">
-            <h1>{track.name}</h1>
-            <p>{track.artists.map((artist) => artist.name).join(", ")}
-                {track.album.name}
+            <h1>{track.title}</h1>
+            <p>{track.artist}, 
+                {track.album}
             </p>
         </div>
     </div>
