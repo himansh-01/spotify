@@ -19,7 +19,7 @@ function Body({ spotify }) {
         <div className="body__infoText">
           <strong>PLAYLIST</strong>
           <h2>{discover_weekly?.strAlbum}</h2>
-          <p>{discover_weekly?.strDescriptionEN?.slice(0, 1000)+ "....."}</p>
+          <p>{discover_weekly.strDescriptionEN ? (discover_weekly?.strDescriptionEN?.slice(0, 1000)+ ".....") + "..."}</p>
         </div>
       </div>
 
